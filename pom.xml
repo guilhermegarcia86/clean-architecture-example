@@ -12,8 +12,10 @@
         <module>entity</module>
         <module>usecase</module>
         <module>adapter/repository/in-memory-db</module>
+        <module>adapter/repository/spring-jdbc</module>
         <module>adapter/controller</module>
         <module>application/manual-app</module>
+        <module>application/spring-boot</module>
     </modules>
 
     <properties>
@@ -25,6 +27,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <junit-jupiter.version>5.5.1</junit-jupiter.version>
         <junit-platform>1.5.1</junit-platform>
+        <spring.version>2.3.0.RELEASE</spring.version>
+        <h2.version>1.4.200</h2.version>
+        <spring.jdbc>5.2.6.RELEASE</spring.jdbc>
     </properties>
 
     <dependencyManagement>
@@ -37,6 +42,31 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok-version}</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.jdbc}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
             </dependency>
 
             <!-- Jupiter -->

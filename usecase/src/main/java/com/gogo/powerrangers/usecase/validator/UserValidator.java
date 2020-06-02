@@ -1,6 +1,7 @@
 package com.gogo.powerrangers.usecase.validator;
 
 import com.gogo.powerrangers.entity.User;
+import com.gogo.powerrangers.usecase.exception.PowerRangerNotFoundException;
 import com.gogo.powerrangers.usecase.exception.UserValidationException;
 
 import static java.util.Objects.isNull;
@@ -13,6 +14,9 @@ public class UserValidator {
         }
         if(user.getAge() < 18) {
             throw new UserValidationException("Usuario deve ser maior de 18 anos");
+        }
+        if(user.getPersonality().getPersonality().isEmpty()){
+            throw new PowerRangerNotFoundException("Power Ranger não localizado com personalidade informada");
         }
     }
 
