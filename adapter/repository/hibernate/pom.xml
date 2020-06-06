@@ -6,7 +6,7 @@
 		<artifactId>clean-architecture-example</artifactId>
 		<groupId>com.gogo.powerrangers</groupId>
 		<version>1.0</version>
-		<relativePath>../../../../apresentacao/pom.xml</relativePath>
+		<relativePath>../../../../clean-architecture-example/pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
