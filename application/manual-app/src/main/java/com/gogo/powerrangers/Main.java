@@ -9,7 +9,8 @@ public class Main {
 
         var config = new ManualConfig();
         var createUser = config.createUser();
-        var controller = new UserController(createUser);
+        var searchUser = config.searchUser();
+        var controller = new UserController(createUser, searchUser);
 
         var userModel = new UserModel();
         userModel.setName(args[0]);

@@ -2,16 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<parent>
 		<artifactId>clean-architecture-example</artifactId>
 		<groupId>com.gogo.powerrangers</groupId>
 		<version>1.0</version>
+		<relativePath>../../../../apresentacao/pom.xml</relativePath>
 	</parent>
-
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>entity</artifactId>
+	<artifactId>hibernate</artifactId>
 	<version>${revision}</version>
 
 	<build>
@@ -29,31 +28,70 @@
 
 	<dependencies>
 
-		<!-- Aqui entram as dependencias de framework -->
+		<dependency>
+			<groupId>com.gogo.powerrangers</groupId>
+			<artifactId>entity</artifactId>
+			<version>${revision}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.gogo.powerrangers</groupId>
+			<artifactId>usecase</artifactId>
+			<version>${revision}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<!-- Jupiter -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+		
+		<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-jpamodelgen</artifactId>
+			</dependency>
+
+			<!--Compile time JPA API -->
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>javax.persistence-api</artifactId>
+			</dependency>
+
+			<!--Runtime JPA implementation -->
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>eclipselink</artifactId>
+			</dependency>
+
+		<!-- Unit Test -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-runner</artifactId>
 		</dependency>
-
 	</dependencies>
+
 
 </project>

@@ -1,24 +1,37 @@
 package com.gogo.powerrangers;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
 import com.gogo.powerrangers.entity.User;
 import com.gogo.powerrangers.entity.UserEntity;
 import com.gogo.powerrangers.mapper.UserRowMapper;
 import com.gogo.powerrangers.usecase.port.UserRepository;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class SpringJdbcUserRepository implements UserRepository {
-
-    private JdbcTemplate jdbcTemplate;
-
-    public SpringJdbcUserRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+	
+	private JdbcTemplate jdbcTemplate;
+    
+    public DataSource dataSource(){
+        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
+                .addScript("classpath:schema.sql").build();
+    }
+    
+    public JdbcTemplate jdbcTemplate(){
+        return new JdbcTemplate(this.dataSource());
+    }
+    
+    public SpringJdbcUserRepository() {
+    	this.jdbcTemplate = this.jdbcTemplate();
     }
 
     @Override
@@ -26,11 +39,11 @@ public class SpringJdbcUserRepository implements UserRepository {
 
         //@formatter:off
         String sql = new StringBuilder().append("INSERT INTO  ")
-                                        .append(" USER(name, age, email, personality, ranger) ")
-                                        .append(" VALUES(?, ?, ?, ?, ?)").toString();
+                                        .append(" USER(id, name, age, email, personality, ranger) ")
+                                        .append(" VALUES(?, ?, ?, ?, ?, ?)").toString();
         //@formatter:on
 
-        jdbcTemplate.update(sql, user.getName(), user.getAge(), user.getEmail(), user.getPersonality().getPersonality(), user.getRanger());
+        jdbcTemplate.update(sql, UUID.randomUUID().toString(), user.getName(), user.getAge(), user.getEmail(), user.getPersonality().getPersonality(), user.getRanger());
 
         return user;
     }

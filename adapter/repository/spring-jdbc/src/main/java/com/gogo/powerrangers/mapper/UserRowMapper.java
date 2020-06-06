@@ -1,11 +1,11 @@
 package com.gogo.powerrangers.mapper;
 
-import com.gogo.powerrangers.entity.Personality;
-import com.gogo.powerrangers.entity.UserEntity;
-import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.gogo.powerrangers.entity.UserEntity;
 
 public class UserRowMapper implements RowMapper<UserEntity> {
 
@@ -14,7 +14,7 @@ public class UserRowMapper implements RowMapper<UserEntity> {
 
         UserEntity entity = new UserEntity();
 
-        entity.setId(resultSet.getInt("ID"));
+        entity.setId(resultSet.getString("ID"));
         entity.setAge(resultSet.getInt("AGE"));
         entity.setEmail(resultSet.getString("EMAIL"));
         entity.setRanger(resultSet.getString("RANGER"));

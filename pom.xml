@@ -1,102 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gogo.powerrangers</groupId>
-    <artifactId>clean-architecture-example</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0</version>
-    <modules>
-        <module>entity</module>
-        <module>usecase</module>
-        <module>adapter/repository/in-memory-db</module>
-        <module>adapter/repository/spring-jdbc</module>
-        <module>adapter/controller</module>
-        <module>application/manual-app</module>
-        <module>application/spring-boot</module>
-    </modules>
+	<groupId>com.gogo.powerrangers</groupId>
+	<artifactId>clean-architecture-example</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<modules>
+		<module>entity</module>
+		<module>usecase</module>
+		<module>adapter/repository/in-memory-db</module>
+		<module>adapter/repository/spring-jdbc</module>
+		<module>adapter/repository/hibernate</module>
+		<module>adapter/controller</module>
+		<module>application/manual-app</module>
+		<module>application/spring-boot</module>
+		<module>application/vertx</module>
+	</modules>
 
-    <properties>
-        <revision>1.0</revision>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
-        <lombok-version>1.18.10</lombok-version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <junit-jupiter.version>5.5.1</junit-jupiter.version>
-        <junit-platform>1.5.1</junit-platform>
-        <spring.version>2.3.0.RELEASE</spring.version>
-        <h2.version>1.4.200</h2.version>
-        <spring.jdbc>5.2.6.RELEASE</spring.jdbc>
-    </properties>
+	<properties>
+		<revision>1.0</revision>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>11</java.version>
+		<lombok-version>1.18.10</lombok-version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<junit-jupiter.version>5.5.1</junit-jupiter.version>
+		<junit-platform>1.5.1</junit-platform>
+		<spring.version>2.3.0.RELEASE</spring.version>
+		<h2.version>1.4.200</h2.version>
+		<spring.jdbc>5.2.6.RELEASE</spring.jdbc>
+		<hibernate.version>5.4.14.Final</hibernate.version>
+		<javax.persistence-api.version>2.2</javax.persistence-api.version>
+		<eclipselink.version>2.7.4</eclipselink.version>
+		<vertx.version>3.9.1</vertx.version>
+		<jackson.core.version>2.11.0</jackson.core.version>
+	</properties>
 
-    <dependencyManagement>
-        <dependencies>
+	<dependencyManagement>
+		<dependencies>
 
-            <!-- Aqui entram as dependencias de framework -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok-version}</version>
+				<scope>provided</scope>
+			</dependency>
 
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok-version}</version>
-                <scope>provided</scope>
-            </dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring.version}</version>
-                <scope>test</scope>
-            </dependency>
+			<!-- https://mvnrepository.com/artifact/io.vertx/vertx-web -->
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-web</artifactId>
+				<version>${vertx.version}</version>
+			</dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.jdbc}</version>
-            </dependency>
+			<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.core.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
-            </dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.jdbc}</version>
+			</dependency>
 
-            <!-- Jupiter -->
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-launcher</artifactId>
-                <version>${junit-platform}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.platform</groupId>
-                <artifactId>junit-platform-runner</artifactId>
-                <version>${junit-platform}</version>
-                <scope>test</scope>
-            </dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>${h2.version}</version>
+			</dependency>
 
-        </dependencies>
-    </dependencyManagement>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-jpamodelgen</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<!--Compile time JPA API -->
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>javax.persistence-api</artifactId>
+				<version>${javax.persistence-api.version}</version>
+			</dependency>
+
+			<!--Runtime JPA implementation -->
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>eclipselink</artifactId>
+				<version>${eclipselink.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- Jupiter -->
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-launcher</artifactId>
+				<version>${junit-platform}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-runner</artifactId>
+				<version>${junit-platform}</version>
+				<scope>test</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 
 
 </project>

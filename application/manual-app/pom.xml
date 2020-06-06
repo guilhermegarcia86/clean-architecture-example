@@ -66,6 +66,12 @@
             <artifactId>in-memory-db</artifactId>
             <version>${revision}</version>
         </dependency>
+        
+        <dependency>
+			<groupId>com.gogo.powerrangers</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>${revision}</version>
+		</dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -1,10 +1,12 @@
 package com.gogo.powerrangers.entity;
 
-import com.gogo.powerrangers.entity.Personality;
-import com.gogo.powerrangers.entity.User;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.gogo.powerrangers.entity.Personality;
+import com.gogo.powerrangers.entity.User;
+
 
 public class UserTest {
 

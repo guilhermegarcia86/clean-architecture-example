@@ -18,7 +18,7 @@ public class MainTest {
     @BeforeEach
     void setup(){
         config = new ManualConfigTest();
-        controller = new UserController(config.createUser());
+        controller = new UserController(config.createUser(), config.searchUser());
 
         userModel = new UserModel();
         userModel.setName("Guilherme");
