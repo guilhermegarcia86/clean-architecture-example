@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
@@ -25,10 +24,10 @@ public class HibernateUserRepository implements UserRepository{
 
 	@Override
 	public User create(User user) {
-		EntityManager entityManager = emf.createEntityManager();
+		var entityManager = emf.createEntityManager();
 		entityManager.getTransaction().begin();
 		
-		UserEntity entity = new UserEntity();
+		var entity = new UserEntity();
 		entity.setId(UUID.randomUUID().toString());
 		entity.setName(user.getName());
 		entity.setEmail(user.getEmail());
@@ -45,7 +44,7 @@ public class HibernateUserRepository implements UserRepository{
 
 	@Override
 	public Optional<User> findByEmail(String email) {
-		EntityManager entityManager = emf.createEntityManager();
+		var entityManager = emf.createEntityManager();
 		
 		//@formatter:off
 		TypedQuery<UserEntity> query = entityManager.createQuery(new StringBuilder()
@@ -55,7 +54,7 @@ public class HibernateUserRepository implements UserRepository{
 		// @formatter:on
 		
 		try {
-			UserEntity userEntity = query.setParameter("email", email).getSingleResult();
+			var userEntity = query.setParameter("email", email).getSingleResult();
 			
 			return Optional.of(UserEntity.toUser(userEntity));			
 		} catch (NoResultException e) {
@@ -65,11 +64,11 @@ public class HibernateUserRepository implements UserRepository{
 
 	@Override
 	public Optional<List<User>> findAllUsers() {
-		EntityManager entityManager = emf.createEntityManager();
+		var entityManager = emf.createEntityManager();
 		
-		List<UserEntity> userEntityList = entityManager.createQuery("SELECT user FROM UserEntity user", UserEntity.class).getResultList();
+		var userEntityList = entityManager.createQuery("SELECT user FROM UserEntity user", UserEntity.class).getResultList();
 		
-		List<User> userList = userEntityList.stream().map(UserEntity::toUser).collect(Collectors.toList());
+		var userList = userEntityList.stream().map(UserEntity::toUser).collect(Collectors.toList());
 
         return Optional.of(userList);
 	}
