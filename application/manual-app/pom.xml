@@ -38,22 +38,11 @@
                     </archive>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.gogo.powerrangers</groupId>
-            <artifactId>entity</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.gogo.powerrangers</groupId>
-            <artifactId>usecase</artifactId>
-            <version>${revision}</version>
-        </dependency>
 
         <dependency>
             <groupId>com.gogo.powerrangers</groupId>
@@ -65,17 +54,6 @@
             <groupId>com.gogo.powerrangers</groupId>
             <artifactId>in-memory-db</artifactId>
             <version>${revision}</version>
-        </dependency>
-        
-        <dependency>
-			<groupId>com.gogo.powerrangers</groupId>
-			<artifactId>hibernate</artifactId>
-			<version>${revision}</version>
-		</dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
 
         <!-- Unit Test -->

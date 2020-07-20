@@ -2,6 +2,7 @@ package com.gogo.powerrangers.endpoint;
 
 import com.gogo.powerrangers.UserController;
 
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
@@ -21,8 +22,8 @@ public class SearchUserController extends Controller{
 		} else {
 			try {
 				var user = controller.searchByEmail(userEmail);
-				var result = JsonObject.mapFrom(user);
-				sendSuccess(result, response);
+				JsonObject jsonObject = new JsonObject(Json.encode(user));
+				sendSuccess(jsonObject, response);
 			} catch (RuntimeException e) {
 				sendError(404, response);
 			}

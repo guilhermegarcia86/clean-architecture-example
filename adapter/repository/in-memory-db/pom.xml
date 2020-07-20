@@ -40,11 +40,6 @@
             <version>${revision}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
         <!-- Unit Test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

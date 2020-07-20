@@ -30,12 +30,6 @@
 
         <dependency>
             <groupId>com.gogo.powerrangers</groupId>
-            <artifactId>entity</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.gogo.powerrangers</groupId>
             <artifactId>usecase</artifactId>
             <version>${revision}</version>
         </dependency>

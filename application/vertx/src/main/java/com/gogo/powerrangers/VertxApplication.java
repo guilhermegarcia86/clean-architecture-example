@@ -26,7 +26,7 @@ public class VertxApplication extends AbstractVerticle{
         router.post("/add").handler(addUserController::createUser);
         router.get("/user").handler(searchUserController::findUser);
 
-        vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+        vertx.createHttpServer().requestHandler(router::accept).listen(8081);
     }
 
     public static void main(String[] args) {
