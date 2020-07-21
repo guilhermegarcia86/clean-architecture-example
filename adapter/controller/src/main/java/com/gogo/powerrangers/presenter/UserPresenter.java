@@ -1,10 +1,10 @@
-package com.gogo.powerrangers.model;
+package com.gogo.powerrangers.presenter;
 
 import com.gogo.powerrangers.entity.User;
 import lombok.Data;
 
 @Data
-public class UserModel {
+public class UserPresenter {
 
     private String name;
     private String email;
@@ -12,9 +12,9 @@ public class UserModel {
     private String personality;
     private String ranger;
 
-    public static UserModel mapToUserModel(User user) {
+    public static UserPresenter mapToUserModel(User user) {
 
-        var userModel = new UserModel();
+        var userModel = new UserPresenter();
         userModel.name = user.getName();
         userModel.email = user.getEmail();
         userModel.age = user.getAge();
@@ -24,12 +24,12 @@ public class UserModel {
         return userModel;
     }
 
-    public static User mapToUser(UserModel userModel) {
+    public static User mapToUser(UserPresenter userPresenter) {
         //@formatter:off
-        return User.builder().name(userModel.getName())
-                             .age(userModel.getAge())
-                             .email(userModel.getEmail())
-                             .personality(userModel.getPersonality())
+        return User.builder().name(userPresenter.getName())
+                             .age(userPresenter.getAge())
+                             .email(userPresenter.getEmail())
+                             .personality(userPresenter.getPersonality())
                              .build();
         //@formatter:on
     }

@@ -1,7 +1,7 @@
 package com.gogo.powerrangers.endpoint;
 
 import com.gogo.powerrangers.UserController;
-import com.gogo.powerrangers.model.UserModel;
+import com.gogo.powerrangers.presenter.UserPresenter;
 
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
@@ -21,7 +21,7 @@ public class AddUserController extends Controller{
         if (isNull(body)) {
             sendError(400, response);
         } else {
-            var userModel = Json.decodeValue(body.toJsonObject().encode(), UserModel.class);
+            var userModel = Json.decodeValue(body.toJsonObject().encode(), UserPresenter.class);
             var user = controller.createUser(userModel);
             JsonObject jsonObject = new JsonObject(Json.encode(user));
             sendSuccess(jsonObject, response);

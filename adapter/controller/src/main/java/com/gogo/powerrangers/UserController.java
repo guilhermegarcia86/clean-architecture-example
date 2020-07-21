@@ -1,6 +1,6 @@
 package com.gogo.powerrangers;
 
-import com.gogo.powerrangers.model.UserModel;
+import com.gogo.powerrangers.presenter.UserPresenter;
 import com.gogo.powerrangers.usecase.CreateUser;
 import com.gogo.powerrangers.usecase.SearchUser;
 
@@ -14,18 +14,18 @@ public class UserController {
         this.searchUser = searchUser;
     }
 
-    public UserModel createUser(UserModel userModel){
+    public UserPresenter createUser(UserPresenter userPresenter){
 
-        var user = createUser.create(UserModel.mapToUser(userModel));
+        var user = createUser.create(UserPresenter.mapToUser(userPresenter));
 
-        return UserModel.mapToUserModel(user);
+        return UserPresenter.mapToUserModel(user);
     }
     
-    public UserModel searchByEmail(String email) {
+    public UserPresenter searchByEmail(String email) {
     	
     	var user = searchUser.search(email);
     	
-    	return UserModel.mapToUserModel(user);
+    	return UserPresenter.mapToUserModel(user);
     }
 
 }
