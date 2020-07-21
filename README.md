@@ -1,6 +1,6 @@
 # Clean Architecture Example
 
-Clean Architecture example using Java wihtout any framework, a Spring Boot Application and VertX appliction.
+Clean Architecture example using Java wihtout any framework, a Spring Boot Application and VertX application.
 
 ## Build
 
