@@ -1,7 +1,7 @@
 package com.gogo.powerrangers;
 
 import com.gogo.powerrangers.config.ManualConfig;
-import com.gogo.powerrangers.model.UserModel;
+import com.gogo.powerrangers.presenter.UserPresenter;
 
 public class Main {
 
@@ -12,7 +12,7 @@ public class Main {
         var searchUser = config.searchUser();
         var controller = new UserController(createUser, searchUser);
 
-        var userModel = new UserModel();
+        var userModel = new UserPresenter();
         userModel.setName(args[0]);
         userModel.setEmail(args[1]);
         userModel.setAge(Integer.parseInt(args[2]));
