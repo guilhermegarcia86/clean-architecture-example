@@ -32,7 +32,7 @@
 		<spring.version>2.3.0.RELEASE</spring.version>
 		<h2.version>1.4.200</h2.version>
 		<spring.jdbc>5.2.6.RELEASE</spring.jdbc>
-		<hibernate.version>5.4.14.Final</hibernate.version>
+		<hibernate.version>5.4.24.Final</hibernate.version>
 		<javax.persistence-api.version>2.2</javax.persistence-api.version>
 		<eclipselink.version>2.7.4</eclipselink.version>
 		<vertx.version>3.9.1</vertx.version>
