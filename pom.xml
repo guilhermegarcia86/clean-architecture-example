@@ -35,7 +35,7 @@
 		<hibernate.version>5.4.14.Final</hibernate.version>
 		<javax.persistence-api.version>2.2</javax.persistence-api.version>
 		<eclipselink.version>2.7.4</eclipselink.version>
-		<vertx.version>3.9.1</vertx.version>
+		<vertx.version>3.9.4</vertx.version>
 		<jackson.core.version>2.11.0</jackson.core.version>
 	</properties>
 
